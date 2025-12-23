@@ -1,0 +1,177 @@
+html, body, #cesiumContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#controlPanel {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 230px;
+  background: rgba(30,30,30,0.9);
+  padding: 8px;
+  color: white;
+  font-family: sans-serif;
+  z-index: 10;
+  transition: transform 0.3s;
+}
+
+#controlPanel.closed {
+  transform: translateX(-230px); /* geser panel ke kiri */
+}
+
+/* Tombol toggle di kanan panel, tengah vertikal */
+#toggleBtn {
+  position: absolute;
+  top: 50%; 
+  left: 230px; /* posisi awal di sisi kanan panel */
+  transform: translateY(-50%);
+  background: #444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px 0 0 4px;
+  z-index: 11;
+  transition: left 0.3s; /* tombol ikut geser panel */
+  font-size: 16px;
+}
+
+/* Saat panel tertutup, geser tombol ke kiri agar hanya sisa tombol terlihat */
+#controlPanel.closed + #toggleBtn {
+  left: 30px; /* hanya sisakan tombol terlihat */
+}
+
+.group {
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 6px;
+  margin-bottom: 8px;
+}
+
+.group legend {
+  font-size: 11px;
+  padding: 0 4px;
+  color: #ccc;
+}
+
+.group button,
+.group input {
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* ===== LAYER LIST ===== */
+#layerList {
+  width: 100%;
+}
+
+.layer-item {
+  display: grid;
+  grid-template-columns: 18px 1fr 18px;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 6px;
+  font-size: 12px;
+  cursor: default;
+}
+
+.layer-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* checkbox */
+.layer-item input[type="checkbox"] {
+  margin: 0;
+}
+
+/* nama layer */
+.layer-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* titik tiga */
+.layer-menu {
+  text-align: center;
+  cursor: pointer;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.layer-menu:hover {
+  color: white;
+}
+
+/* ===== POPUP MENU ===== */
+.layer-popup {
+  position: absolute;
+  background: #2b2b2b;             /* lebih gelap */
+  border: 1px solid #555;
+  padding: 4px 0;
+  font-size: 12px;
+  z-index: 9999;
+  min-width: 130px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.layer-popup-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #ffffff;                  /* kontras */
+}
+
+.layer-popup-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* khusus delete */
+.layer-popup-item.delete {
+  color: #ff5c5c;
+}
+
+.layer-popup-item.delete:hover {
+  background: rgba(255,80,80,0.25);
+}
+
+#measureResult {
+  font-size: 13px;
+  color: #fff;
+}
+
+#measureMenu {
+  font-size: 16px;
+  color: #ccc;
+}
+
+#measureMenu:hover {
+  color: white;
+}
+
+.measure-popup {
+  position: absolute;
+  background: #2b2b2b;
+  border: 1px solid #555;
+  padding: 4px 0;
+  font-size: 12px;
+  z-index: 9999;
+  min-width: 100px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+.measure-popup-item {
+  padding: 6px 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.measure-popup-item:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.measure-popup div {
+  color: #fff; /* semua teks di popup menjadi putih */
+}

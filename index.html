@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>WebGIS 3D Cesium</title>
+
+  <!-- CESIUM CDN (AMAN) -->
+  <script src="https://unpkg.com/cesium@1.110.1/Build/Cesium/Cesium.js"></script>
+  <link href="https://unpkg.com/cesium@1.110.1/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/panel.css">
+    <style>
+    html, body, #cesiumContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    </style>
+</head>
+
+<body>
+  <div id="cesiumContainer"></div>
+
+  <!-- PANEL KONTROL -->
+  <div id="controlPanel">
+
+    <button id="toggleBtn">❮</button>
+    <fieldset class="group">
+        <legend>Measurement</legend>
+        <button onclick="Measure.startDistance()">Measure Distance</button>
+        <button onclick="Measure.startArea()">Measure Area</button>
+        <button onclick="Measure.clear()">Clear Measurement</button>
+        
+        <!-- Container hasil measurement -->
+        <div id="measureContainer" style="margin-top:10px; display:flex; align-items:center; justify-content:space-between;border: 1px solid #888;padding:4px 8px;  ">
+            <div id="measureResult">-</div>
+            <div id="measureMenu" style="cursor:pointer;">⋮</div>
+        </div>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend>Load Layer Data</legend>
+        <input type="file" id="fileInput" accept=".geojson,.json,.kml,.kmz,.czml,.glb,.gltf" multiple/>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend>Loaded Layers</legend>
+        <div id="layerList">-</div>
+    </fieldset>
+
+    <fieldset class="group">
+        <legend>Base Map & Free Catalog</legend>
+        <div id="catalogList">-</div>
+    </fieldset>
+
+
+    </div>
+    
+
+  <script src="js/viewer.js"></script>
+  <script src="https://unpkg.com/shpjs/dist/shp.min.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/measure.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/ui.js"></script>
+  
+
+</body>
+</html>
